@@ -5,9 +5,7 @@
 .settings
 
 /web/bundles/
-/app/bootstrap.php.cache
 /app/cache/*
-/app/config/parameters.yml
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
@@ -25,3 +23,9 @@
 !/src/Kwejk/MemsBundle/Entity/Rating.php
 !/src/Kwejk/UserBundle/KwejkUserBundle.php
 !/src/Kwejk/UserBundle/Entity/User.php
+!/app/autoload.php
+!/app/SymfonyRequirements.php
+!/app/check.php
+!/app/AppCache.php
+!/app/AppKernel.php
+!/app/DoctrineMigrations/Version20141105201840.php

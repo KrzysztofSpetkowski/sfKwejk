@@ -18,3 +18,10 @@
 /nbproject/private/
 
 *.php
+!/src/Kwejk/MemsBundle/Entity/Comment.php
+!/src/Kwejk/MemsBundle/Entity/Mems.php
+!/src/Kwejk/MemsBundle/Entity/Raring.php
+!/src/Kwejk/MemsBundle/KwejkMemsBundle.php
+!/src/Kwejk/MemsBundle/Entity/Rating.php
+!/src/Kwejk/UserBundle/KwejkUserBundle.php
+!/src/Kwejk/UserBundle/Entity/User.php

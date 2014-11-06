@@ -10,7 +10,6 @@
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 /build/
-/vendor/
 /bin/
 /composer.phar
 /nbproject/private/
@@ -30,3 +29,5 @@
 !/app/AppKernel.php
 !/app/DoctrineMigrations/Version20141105201840.php
 !/src/Kwejk/LayoutBundle/KwejkLayoutBundle.php
+!/src/Kwejk/LayoutBundle/Controller/DefaultController.php
+!/vendor/doctrine/doctrine-fixtures-bundle/Doctrine/Bundle/FixturesBundle/DoctrineFixturesBundle.php

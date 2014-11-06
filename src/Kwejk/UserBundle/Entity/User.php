@@ -1,15 +1,23 @@
 <?php
 namespace Kwejk\UserBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="fos_user")
  * @ORM\Entity
  */
 class User
-{
+{  
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+    
     /**
      * @var integer
      *
@@ -22,6 +30,8 @@ class User
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Mem", mappedBy="createdBy")
      * @var ArrayCollection
      */
+    
+   
     private $mems;
     
     /**

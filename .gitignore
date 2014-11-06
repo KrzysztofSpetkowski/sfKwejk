@@ -29,3 +29,4 @@
 !/app/AppCache.php
 !/app/AppKernel.php
 !/app/DoctrineMigrations/Version20141105201840.php
+!/src/Kwejk/LayoutBundle/KwejkLayoutBundle.php

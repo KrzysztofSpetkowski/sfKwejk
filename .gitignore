@@ -33,3 +33,6 @@
 !/vendor/doctrine/doctrine-fixtures-bundle/Doctrine/Bundle/FixturesBundle/DoctrineFixturesBundle.php
 !/src/Kwejk/CoreBundle/KwejkCoreBundle.php
 !/src/Kwejk/CoreBundle/Controller/Controller.php
+!/src/Kwejk/MemsBundle/Controller/MemsController.php
+!/src/Kwejk/MemsBundle/Controller/DefaultController.php
+!/src/Kwejk/MemsBundle/DataFixtures/ORM/LoadMemsData.php

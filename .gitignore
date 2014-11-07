@@ -31,3 +31,5 @@
 !/src/Kwejk/LayoutBundle/KwejkLayoutBundle.php
 !/src/Kwejk/LayoutBundle/Controller/DefaultController.php
 !/vendor/doctrine/doctrine-fixtures-bundle/Doctrine/Bundle/FixturesBundle/DoctrineFixturesBundle.php
+!/src/Kwejk/CoreBundle/KwejkCoreBundle.php
+!/src/Kwejk/CoreBundle/Controller/Controller.php

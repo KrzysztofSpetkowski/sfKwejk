@@ -60,11 +60,21 @@ class Comment
      * @ORM\Column(name="user_agent", type="string", length=255)
      */
     private $userAgent;
+    
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->host = 'localhost';
+        $this->ip = '127.0.0.1';
+        $this->userAgent = "boot";
+    }
+    
     /**
      * Get id
      *
      * @return integer 
      */
+  
     public function getId()
     {
         return $this->id;

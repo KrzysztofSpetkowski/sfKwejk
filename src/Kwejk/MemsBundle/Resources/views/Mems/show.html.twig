@@ -2,28 +2,50 @@
 
 {% block title %}{{ mem.title }}{% endblock %}
 
+{% block stylesheets %} 
+
+    {{ parent() }}
+
+{% endblock %}
+
 {% block body %}
+
 <h1>{{ block('title') }}</h1>
-  <div>
-  <p>{{ mem.title }}</p>
-		
-			<p>{{ mem.title }}</p>
-			
-			<img src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt ="{{ mem.title }}">
-			<p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('y-m-d H:i:s') }}</p>
-			
-			<h3> Komentarze ({{ mem.comments|length }})</h3>
-			
-			{% for comments in mem.comments %}
-			
-				<p id="comment-{{ mem.id }}">
-				{{ comment.comment }}
-				<small> oddany przez {{ comment.createdBy }} dnia {{ comment.createdAt|date('y-m-d H:i:s') }} </small>
-			
-			{% else %}
-			
-				<p> nie znalozeiono komentarzy <a href="#" title='Dodaj komentarz'> dodaj komentarz jako pierwszy</a></p>
-			
-			{% endfor %}
-	  </div>
+
+<div>
+
+    <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
+    
+    <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
+    
+    <h3>Komentarze ({{ mem.comments|length }})</h3>
+    
+    {% for comment in mem.comments %}
+    
+        <p id="comment-{{ comment.id }}">
+            {{ comment.comment }}
+            <small>Dodany przez {{ comment.createdBy }} dnia {{ comment.createdAt|date('Y-m-d H:i:s') }}</small>
+        </p>
+    
+    {% else %}
+        
+        <p>Nie znaleziono komentarzy.</p>
+        
+    {% endfor %}
+    
+    {# if app.user #}
+    {% if is_granted('ROLE_USER') %}
+    
+        {% if mem.comments|length > 0 %}
+            <h3>Dodaj komentarz!</h3>
+        {% else %}
+            <h3>Dodaj jako pierwszy!</h3>
+        {% endif %}
+        
+        {{ form(form) }}
+        
+    {% endif %}
+    
+</div>
+        
 {% endblock %}

@@ -41,3 +41,4 @@
 !/src/Kwejk/MemsBundle/Form/MemType.php
 !/src/Kwejk/MemsBundle/Tests/Controller/DefaultControllerTest.php
 !/src/Kwejk/MemsBundle/Tests/Controller/CommentControllerTest.php
+!/src/Kwejk/LayoutBundle/Menu/Builder.php

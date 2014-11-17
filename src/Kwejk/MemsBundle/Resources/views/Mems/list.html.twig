@@ -1,16 +1,25 @@
 {% extends "KwejkLayoutBundle::layout.html.twig" %}
 
 {% block title %}Lista memów{% endblock %}
-
+    
 {% block body %}
-	{% for mem in mems %}
-	   <div>
-		<a href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}">
-			<p>{{ mem.title }}</p>
-			<img src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt ="{{ mem.title }}">
-		</a>		
-	  </div>
-	{% else %}
-		<p> Brak memów</p>
-	{% endfor %}
-{% endblock %}
+
+    <h1>Strona główna</h1>
+    
+    <a href="{{ path('kwejk_mems_add') }}" class="btn btn-info">Dodaj mema</a>
+    
+    {% for mem in pages %}
+        <div>
+            <a href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}">
+                <p>{{ mem.title }}</p>
+                <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
+            </a>
+        </div>
+    {% else %}
+        <p>Brak memów</p>    
+    {% endfor %}
+    
+    {{ knp_pagination_render(pages) }}
+    
+    {% endblock %}
+    

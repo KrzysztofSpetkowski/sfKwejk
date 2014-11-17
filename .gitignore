@@ -36,3 +36,8 @@
 !/src/Kwejk/MemsBundle/Controller/MemsController.php
 !/src/Kwejk/MemsBundle/Controller/DefaultController.php
 !/src/Kwejk/MemsBundle/DataFixtures/ORM/LoadMemsData.php
+!/src/Kwejk/MemsBundle/Controller/CommentController.php
+!/src/Kwejk/MemsBundle/Form/CommentType.php
+!/src/Kwejk/MemsBundle/Form/MemType.php
+!/src/Kwejk/MemsBundle/Tests/Controller/DefaultControllerTest.php
+!/src/Kwejk/MemsBundle/Tests/Controller/CommentControllerTest.php

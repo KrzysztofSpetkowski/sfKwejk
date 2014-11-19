@@ -1,12 +1,9 @@
 <?php
-
 namespace Kwejk\MemsBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-class AddMemType extends AbstractType
+class AddCommentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,12 +12,11 @@ class AddMemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('imageFile', 'file')
-            ->add('save', 'submit', array(
-                'label'     => 'Dodaj',
-                'attr'      => array('class' => 'btn pull-right')
+            ->add('comment', 'textarea', array(
+                'label'     => false,
+                'attr'      => array('placeholder' => "Treść komentarza")
             ))
+            ->add('save', 'submit')
         ;
     }
     
@@ -30,15 +26,14 @@ class AddMemType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Kwejk\MemsBundle\Entity\Mem'
+            'data_class' => 'Kwejk\MemsBundle\Entity\Comment'
         ));
     }
-
     /**
      * @return string
      */
     public function getName()
     {
-        return 'kwejk_memsbundle_add_mem';
+        return 'kwejk_memsbundle_add_comment';
     }
 }

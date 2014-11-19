@@ -1,8 +1,11 @@
 <?php
+
 namespace Kwejk\MemsBundle\Form;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
 class MemType extends AbstractType
 {
     /**
@@ -30,6 +33,7 @@ class MemType extends AbstractType
             'data_class' => 'Kwejk\MemsBundle\Entity\Mem'
         ));
     }
+
     /**
      * @return string
      */

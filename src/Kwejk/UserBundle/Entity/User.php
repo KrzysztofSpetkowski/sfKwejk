@@ -1,12 +1,11 @@
 <?php
 namespace Kwejk\UserBundle\Entity;
-use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table()
  * @ORM\Entity
  */
 class User extends BaseUser
@@ -19,23 +18,24 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    
     /**
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Mem", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    protected $mems;
+    private $mems;
     
     /**
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Comment", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    protected $comments;
+    private $commnets;
     
     /**
      * @ORM\OneToMany(targetEntity="Kwejk\MemsBundle\Entity\Rating", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    protected $ratings;
+    private $ratings;
     
     /**
      * Get id
@@ -51,12 +51,13 @@ class User extends BaseUser
      */
     public function __construct()
     {
-        parent::__construct();
-        
-        $this->roles = ['ROLE_USER'];
-        
+    	parent::__construct();
+    	
+    	
+    	$this->roles = ['ROLE_USER'];
+    	
         $this->mems = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commnets = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
     }
     /**
@@ -89,33 +90,33 @@ class User extends BaseUser
         return $this->mems;
     }
     /**
-     * Add comments
+     * Add commnets
      *
-     * @param \Kwejk\MemsBundle\Entity\Comment $comments
+     * @param \Kwejk\MemsBundle\Entity\Comment $commnets
      * @return User
      */
-    public function addComment(\Kwejk\MemsBundle\Entity\Comment $comments)
+    public function addCommnet(\Kwejk\MemsBundle\Entity\Comment $commnets)
     {
-        $this->comments[] = $comments;
+        $this->commnets[] = $commnets;
         return $this;
     }
     /**
-     * Remove comments
+     * Remove commnets
      *
-     * @param \Kwejk\MemsBundle\Entity\Comment $comments
+     * @param \Kwejk\MemsBundle\Entity\Comment $commnets
      */
-    public function removeComment(\Kwejk\MemsBundle\Entity\Comment $comments)
+    public function removeCommnet(\Kwejk\MemsBundle\Entity\Comment $commnets)
     {
-        $this->comments->removeElement($comments);
+        $this->commnets->removeElement($commnets);
     }
     /**
-     * Get comments
+     * Get commnets
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getComments()
+    public function getCommnets()
     {
-        return $this->comments;
+        return $this->commnets;
     }
     /**
      * Add ratings

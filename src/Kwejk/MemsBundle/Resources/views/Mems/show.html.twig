@@ -16,7 +16,7 @@
 
     <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
     
-    <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
+    <p>Dodany przez <b>{{ mem.createdBy }}</b> , dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
     
     <h3>Komentarze ({{ mem.comments|length }})</h3>
     
@@ -24,7 +24,7 @@
     
         <p id="comment-{{ comment.id }}">
             {{ comment.comment }}
-            <small>Dodany przez {{ comment.createdBy }} dnia {{ comment.createdAt|date('Y-m-d H:i:s') }}</small>
+            <small>Dodany przez <b>{{ comment.createdBy }}</b> dnia {{ comment.createdAt|date('Y-m-d H:i:s') }}</small>
         </p>
     
     {% else %}

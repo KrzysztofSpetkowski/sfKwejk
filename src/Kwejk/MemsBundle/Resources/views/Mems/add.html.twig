@@ -6,6 +6,8 @@
 
 <h1>{{ block('title') }}</h1>
 
-{{ form(form) }}
+{{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div class="clearfix"></div>
 
 {% endblock %}

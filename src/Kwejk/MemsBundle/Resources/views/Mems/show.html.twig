@@ -44,6 +44,10 @@
         
         {{ form(form) }}
         
+        {% else %}
+        
+        <p><a href="{{ path('fos_user_security_login') }}" >Zaloguj się</a>, by móc dodawać komentarze.</p>
+        
     {% endif %}
     
 </div>

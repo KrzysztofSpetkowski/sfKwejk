@@ -1,0 +1,1 @@
+{% extends_admingenerated "KwejkAdminBundle:KwejkEdit:index.html.twig" %}

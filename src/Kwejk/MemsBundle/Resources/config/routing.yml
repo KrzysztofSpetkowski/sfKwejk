@@ -10,6 +10,11 @@ kwejk_mems_list:
     path:     /{page}
     defaults: { _controller: KwejkMemsBundle:Mems:list, page: 1 }
     requirements: { page: \d+ }
+    
+kwejk_mems_unaccepted_list:
+    path:     /poczekalnia/{page}
+    defaults: { _controller: KwejkMemsBundle:Mems:listUnaccepted, page: 1 }
+    requirements: { page: \d+ }
 
 kwejk_mems_show:
     path:     /{slug}

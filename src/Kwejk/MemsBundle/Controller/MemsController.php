@@ -33,6 +33,26 @@ class MemsController extends Controller
         ));
     }
 
+    public function listUnacceptedAction($page)
+    {
+        $mems = $this->getDoctrine()
+                ->getRepository('KwejkMemsBundle:Mem')
+                 ->findBy(
+                ['isAccepted' => false],
+                ['createdAt' => 'desc']
+            );
+         $paginator  = $this->get('knp_paginator');
+         $pages = $paginator->paginate(
+                $mems,
+                $page,
+                5
+        );
+        return $this->render('KwejkMemsBundle:Mems:listUnaccepted.html.twig', array(
+            'pages' =>$pages,
+        ));
+        
+    }
+    
     public function showAction($slug)
     {
         $request = $this->getRequest();
@@ -49,7 +69,7 @@ class MemsController extends Controller
         }
         
         $comment = new Comment();
-        $form = $this->createForm(new AddCommentType(), $comment);
+        $form1 = $this->createForm(new AddCommentType(), $comment);
         
         if ($user && $user->hasRole('ROLE_USER')) {
 
@@ -59,7 +79,7 @@ class MemsController extends Controller
             // $comment->setHost($host);
             // ...
             
-            $form->handleRequest($request);
+            $form1->handleRequest($request);
             
             if ($form->isValid()) {
             

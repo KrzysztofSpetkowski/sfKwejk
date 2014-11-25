@@ -9,7 +9,7 @@
     
     {% for mem in pages %}
         <div class="media">
-            <a href="{{ path('mems_show', {'slug': mem.slug}) }}" class="media-left pull-left">
+            <a href="{{ path('kwejk_mems_show', {'slug': mem.slug}) }}" class="media-left pull-left">
                 <p>{{ mem.title }}</p>
                 <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}" class="thumbnail" style="width: 200px">
             </a>

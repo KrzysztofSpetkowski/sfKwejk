@@ -37,6 +37,7 @@
     {% if is_granted('ROLE_USER') %}
     
         {% if mem.comments|length > 0 %}
+            
             <h3>Dodaj komentarz!</h3>
         {% else %}
             <h3>Dodaj jako pierwszy!</h3>
@@ -49,6 +50,36 @@
         <p><a href="{{ path('fos_user_security_login') }}" >Zaloguj się</a>, by móc dodawać komentarze.</p>
         
     {% endif %}
+    
+    <h3>Lista ocen: </h3>
+  
+        {% for rating in mem.ratings %}
+
+            <p id="rating-{{ rating.id }}">{{ rating.rating }}
+                <small>Dodana przez {{ rating.createdBy }} dnia {{ rating.createdAt|date('Y-m-d H:i:s') }}</small>
+            </p>
+        
+    
+    {% else %}
+        
+            <p>Nie znaleziono ocen.</p>
+        
+    {% endfor %}
+    
+    {# if app.user #}
+            {% if is_granted('ROLE_USER') %}
+        
+        <h3>Oceń mema.</h3>
+        
+            {{ form(form) }}
+            
+            {% else %}
+                
+            <p><a href="{{ path('fos_user_security_login') }}"> Zaloguj się </a>, aby ocenić mema.</p>
+            
+        {% endif %}
+        
+  <div class="clearfix"></div>
     
 </div>
         

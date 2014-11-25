@@ -69,7 +69,7 @@ class MemsController extends Controller
         }
         
         $comment = new Comment();
-        $form1 = $this->createForm(new AddCommentType(), $comment);
+        $form = $this->createForm(new AddCommentType(), $comment);
         
         if ($user && $user->hasRole('ROLE_USER')) {
 
@@ -79,7 +79,7 @@ class MemsController extends Controller
             // $comment->setHost($host);
             // ...
             
-            $form1->handleRequest($request);
+            $form->handleRequest($request);
             
             if ($form->isValid()) {
             
@@ -98,6 +98,72 @@ class MemsController extends Controller
             'mem'   => $mem,
             'form'  => $form->createView()
         ));    
+    }
+    
+    public function showRandomAction()
+    {
+        $request = $this->getRequest();
+        $user = $this->getUser();
+        $mem = $this->getDoctrine()
+            ->getRepository('KwejkMemsBundle:Mem')
+            ->getRandom();
+        
+        
+        $comment = new Comment();
+        $form1 = $this->createForm(new AddCommentType(), $comment);
+         if ($user && $user->hasRole('ROLE_USER')) {
+            
+            $comment->setHost();
+            $comment->setIp();
+            $comment->setUserAgent();
+            $comment->setMem($mem);
+            $comment->setCreatedBy($user);
+            
+            $form1->handleRequest($request);
+            
+            if ($form1->isValid()) {
+             
+                // save data
+                $this->persist($comment);
+            
+                $this->addFlash('notice', "Komentarz został pomyślnie zapisany.");
+            
+                return $this->redirect($this->generateUrl('mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+        }
+        $rating = new Rating();
+        $form2 = $this->createForm(new AddRatingType(), $rating);
+        $rating->setMem($mem);
+        $rating->setCreatedBy($user);
+        $form2->handleRequest($request);
+        
+       
+        
+        
+        if ($form2->isValid()) {
+             
+                // save data
+                $this->persist($rating);
+            
+                $this->addFlash('notice', "Ocena została pomyślnie zapisana.");
+            
+                return $this->redirect($this->generateUrl('mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+        $avgRating = $this->getDoctrine()
+            ->getRepository('KwejkMemsBundle:Mem')
+            ->getMemAvgRating($mem);
+        $averageRating=$avgRating['avgRating'];
+        
+        return $this->render('KwejkMemsBundle:Mems:show.html.twig', array(
+            'mem' => $mem,
+            'form1' => $form1->createView(),
+            'averageRating' => $averageRating,
+            'form2' => $form2->createView()
+        ));
     }
     
     public function addAction(Request $request)

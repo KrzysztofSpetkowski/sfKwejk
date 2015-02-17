@@ -52,7 +52,7 @@
     {% endif %}
     
     <h3>Lista ocen: </h3>
-  
+    <strong>{{ averageRating }}</strong>
         {% for rating in mem.ratings %}
 
             <p id="rating-{{ rating.id }}">{{ rating.rating }}
@@ -71,6 +71,7 @@
         
         <h3>Oceń mema.</h3>
         
+           
             {{ form(form2) }}
             
             {% else %}

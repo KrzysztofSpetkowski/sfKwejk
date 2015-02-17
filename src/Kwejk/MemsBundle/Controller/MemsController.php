@@ -227,5 +227,22 @@ class MemsController extends Controller
             'form'  => $form->createView()
         ));
     }
-
+    public function getAverage($mem)
+    {
+        $i=0;
+        $sum=0;
+        $mems = $this->getDoctrine()
+                ->getRepository('MemsMemsBundle:Mem')
+                 ->findAll();
+        
+        foreach ($mems as $mem)
+        {
+           
+            $sum=$sum+$mems['rating'];
+            $i=$i+1;
+        }
+        $average=$sum/2;
+        
+        return $this->average;
+    }
 }

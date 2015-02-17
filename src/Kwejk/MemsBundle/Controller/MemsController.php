@@ -82,9 +82,9 @@ class MemsController extends Controller
             // $comment->setHost($host);
             // ...
             
-            $form1->handleRequest($request);
+            $form->handleRequest($request);
             
-            if ($form1->isValid()) {
+            if ($form->isValid()) {
             
                 // save data
                 $this->persist($comment);
@@ -115,14 +115,17 @@ class MemsController extends Controller
                     'slug' => $mem->getSlug())
                 ));
             }
+           
          $avgRating = $this->getDoctrine()
-            ->getRepository('KwejkMemsBundle:Mem')
+                 
+            ->getRepository('KwejkMemsBundle:Rating')
+                 
             ->getMemAvgRating($mem);
         $averageRating=$avgRating['avgRating'];
         
         return $this->render('KwejkMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
-            'form1' => $form1->createView(),
+            'form' => $form->createView(),
             'averageRating' => $averageRating,
             'form2' => $form2->createView()
         ));    

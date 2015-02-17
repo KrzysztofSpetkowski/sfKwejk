@@ -6,22 +6,22 @@ use Doctrine\ORM\EntityRepository;
 
 class RatingRepository extends EntityRepository
 {
-//     public function getRandom()
-//    {
-//        // pobieramy ilość memów
-//        $count = $this->createQueryBuilder('u')
-//            ->select('COUNT(u)')
-//            ->where('u.isAccepted = true')
-//            ->getQuery()
-//            ->getSingleScalarResult();
-//        //zwracamy losowego mema
-//        return $this->createQueryBuilder('u')
-//            ->where('u.isAccepted = true')
-//            ->setFirstResult(rand(0, $count - 1))
-//            ->setMaxResults(1)
-//            ->getQuery()
-//            ->getSingleResult();
-//    } 
+     public function getRandom()
+    {
+        // pobieramy ilość memów
+        $count = $this->createQueryBuilder('u')
+            ->select('COUNT(u)')
+            ->where('u.isAccepted = true')
+            ->getQuery()
+            ->getSingleScalarResult();
+        //zwracamy losowego mema
+        return $this->createQueryBuilder('u')
+            ->where('u.isAccepted = true')
+            ->setFirstResult(rand(0, $count - 1))
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getSingleResult();
+    } 
     public function getMemAvgRating($mem)
     {
         $query = $this->getEntityManager()->createQueryBuilder();

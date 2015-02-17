@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Rating
  *
  * @ORM\Table(name="rating")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kwejk\MemsBundle\Entity\RatingRepository")
  */
 class Rating
 {
@@ -20,7 +20,7 @@ class Rating
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
     
@@ -31,7 +31,7 @@ class Rating
     private $createdBy;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Mem", inversedBy="ratings")
+     * @ORM\ManyToOne(targetEntity="Mem", inversedBy="comments")
      * @ORM\JoinColumn(name="mem_id", referencedColumnName="id")
      * @var Mem
      */
@@ -42,6 +42,12 @@ class Rating
      * @ORM\Column(name="rating", type="smallint")
      */
     private $rating;
+    
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     /**
      * Get id
      *
@@ -91,6 +97,28 @@ class Rating
     {
         return $this->rating;
     }
+    
+    /**
+     * Set mem
+     *
+     * @param  $mem
+     * @return Rating
+     */
+    public function setMem($mem)
+    {
+        $this->mem = $mem;
+        return $this;
+    }
+    /**
+     * Get mem
+     *
+     * @return string
+     */
+    public function getMem()
+    {
+        return $this->mem;
+    }
+        
     /**
      * Set createdBy
      *
@@ -110,25 +138,5 @@ class Rating
     public function getCreatedBy()
     {
         return $this->createdBy;
-    }
-    /**
-     * Set mem
-     *
-     * @param \Kwejk\MemsBundle\Entity\Mem $mem
-     * @return Rating
-     */
-    public function setMem(\Kwejk\MemsBundle\Entity\Mem $mem = null)
-    {
-        $this->mem = $mem;
-        return $this;
-    }
-    /**
-     * Get mem
-     *
-     * @return \Kwejk\MemsBundle\Entity\Mem 
-     */
-    public function getMem()
-    {
-        return $this->mem;
     }
 }

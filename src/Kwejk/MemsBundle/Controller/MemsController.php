@@ -9,6 +9,9 @@ use Kwejk\MemsBundle\Form\AddMemType;
 use Kwejk\MemsBundle\Entity\Mem;
 use Symfony\Component\HttpFoundation\Request;
 use Kwejk\CoreBundle\Controller\Controller;
+use Kwejk\MemsBundle\Entity\Rating;
+use Kwejk\MemsBundle\Form\AddRatingType;
+use Kwejk\MemsBundle\Entity\RatingRepository;
 
 class MemsController extends Controller
 {
@@ -79,9 +82,9 @@ class MemsController extends Controller
             // $comment->setHost($host);
             // ...
             
-            $form->handleRequest($request);
+            $form1->handleRequest($request);
             
-            if ($form->isValid()) {
+            if ($form1->isValid()) {
             
                 // save data
                 $this->persist($comment);
@@ -94,10 +97,36 @@ class MemsController extends Controller
             }
         }
         
+     $rating = new Rating();
+        $form2 = $this->createForm(new AddRatingType(), $rating);
+        $rating->setMem($mem);
+        $rating->setCreatedBy($user);
+        $form2->handleRequest($request);
+            
+       
+        if ($form2->isValid()) {
+             
+                // save data
+                $this->persist($rating);
+            
+                $this->addFlash('notice', "Ocena została pomyślnie zapisana.");
+            
+                return $this->redirect($this->generateUrl('kwejk_mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+         $avgRating = $this->getDoctrine()
+            ->getRepository('KwejkMemsBundle:Mem')
+            ->getMemAvgRating($mem);
+        $averageRating=$avgRating['avgRating'];
+        
         return $this->render('KwejkMemsBundle:Mems:show.html.twig', array(
-            'mem'   => $mem,
-            'form'  => $form->createView()
+            'mem' => $mem,
+            'form1' => $form1->createView(),
+            'averageRating' => $averageRating,
+            'form2' => $form2->createView()
         ));    
+        
     }
     
     public function showRandomAction()
@@ -128,7 +157,7 @@ class MemsController extends Controller
             
                 $this->addFlash('notice', "Komentarz został pomyślnie zapisany.");
             
-                return $this->redirect($this->generateUrl('mems_show', array(
+                return $this->redirect($this->generateUrl('kwejk_mems_show', array(
                     'slug' => $mem->getSlug())
                 ));
             }
@@ -149,7 +178,7 @@ class MemsController extends Controller
             
                 $this->addFlash('notice', "Ocena została pomyślnie zapisana.");
             
-                return $this->redirect($this->generateUrl('mems_show', array(
+                return $this->redirect($this->generateUrl('kwejk_mems_show', array(
                     'slug' => $mem->getSlug())
                 ));
             }

@@ -14,6 +14,13 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Mem
 {
+   
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    
     /**
      * @var integer
      *
@@ -89,10 +96,6 @@ class Mem
         $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
     
     /**
      * Get id

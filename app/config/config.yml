@@ -82,12 +82,12 @@ fos_user:
     firewall_name: main
     user_class: Kwejk\UserBundle\Entity\User
 
-admingenerator_generator:
-    # choose  and enable at least one
-    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
-    use_propel:           false
-    use_doctrine_orm:     true
-    use_doctrine_odm:     false
+#admingenerator_generator:
+#    # choose  and enable at least one
+#    base_admin_template: AdmingeneratorGeneratorBundle::base_admin_assetic_less.html.twig
+#    use_propel:           false
+#    use_doctrine_orm:     true
+#    use_doctrine_odm:     false
     
 knp_paginator:
     page_range: 5
@@ -112,3 +112,27 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+            
+easy_admin:
+    entities:
+        Użytkownicy:
+            class: Kwejk\UserBundle\Entity\User
+            list:
+                fields: ['id', 'username', 'email', 'enabled', 'locked', 'lastLogin']
+            edit:
+                fields: 
+                - {property: 'firstName', label: 'Imię i nazwisko'}
+                - email
+                - enabled
+                - locked
+            new:
+                fields: 
+                - {property: 'firstName', label: 'Imię i nazwisko'} 
+                - email
+                - {property: 'password', label: 'Hasło'}
+                - enabled
+                - locked
+            form:
+                fields:
+                    - 'id'
+                    - { property: 'email', type: 'email', label: 'Contact' }

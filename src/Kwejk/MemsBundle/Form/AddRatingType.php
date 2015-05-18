@@ -14,7 +14,9 @@ class AddRatingType extends AbstractType
     {
         
         $builder
-            ->add('rating')
+            ->add('rating', 'choice', array(
+    'choices' => array('1' => 'slaby', '2' => 'dobry')
+))
             
             ->add('zapisz', 'submit')
         ;

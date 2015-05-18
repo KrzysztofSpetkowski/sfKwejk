@@ -1,5 +1,4 @@
 <?php
-
 namespace Kwejk\MemsBundle\Controller;
 
 use Kwejk\MemsBundle\Form\CommentType;
@@ -31,11 +30,17 @@ class MemsController extends Controller
             5
         );
         
+//        $avgRating = $this->getDoctrine()
+//            ->getRepository('KwejkMemsBundle:Mem')
+//            ->getMemAvgRating($mems);
+//        $averageRating=$avgRating['avgRating'];
+//
+
         return $this->render('KwejkMemsBundle:Mems:list.html.twig', array(
-            'pages' => $pages,
+            'pages' =>$pages,
+//            'averageRating' => $averageRating,
         ));
     }
-
     public function listUnacceptedAction($page)
     {
         $mems = $this->getDoctrine()
@@ -75,7 +80,6 @@ class MemsController extends Controller
         $form = $this->createForm(new AddCommentType(), $comment);
         
         if ($user && $user->hasRole('ROLE_USER')) {
-
             $comment->setMem($mem);
             $comment->setCreatedBy($user);
             // TODO: homework
@@ -227,22 +231,22 @@ class MemsController extends Controller
             'form'  => $form->createView()
         ));
     }
-    public function getAverage($mem)
-    {
-        $i=0;
-        $sum=0;
-        $mems = $this->getDoctrine()
-                ->getRepository('MemsMemsBundle:Mem')
-                 ->findAll();
-        
-        foreach ($mems as $mem)
-        {
-           
-            $sum=$sum+$mems['rating'];
-            $i=$i+1;
-        }
-        $average=$sum/2;
-        
-        return $this->average;
-    }
+//    public function getAverage($mem)
+//    {
+//        $i=0;
+//        $sum=0;
+//        $mems = $this->getDoctrine()
+//                ->getRepository('MemsMemsBundle:Mem')
+//                 ->findAll();
+//        
+//        foreach ($mems as $mem)
+//        {
+//           
+//            $sum=$sum+$mems['rating'];
+//            $i=$i+1;
+//        }
+//        $average=$sum/2;
+//        
+//        return $this->average;
+//    }
 }

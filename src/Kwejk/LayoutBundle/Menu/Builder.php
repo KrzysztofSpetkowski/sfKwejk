@@ -22,7 +22,7 @@ class Builder extends ContainerAware
             'uri' => '#'
         ]);
         $menu->addChild('Losuj', [
-            'route' => 'kwejk_mems_list'
+            'route' => 'kwejk_mems_show_rand'
         ]);
          return $menu;
         

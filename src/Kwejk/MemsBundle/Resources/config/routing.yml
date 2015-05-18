@@ -30,4 +30,4 @@ kwejk_mems_comment_edit:
     
 kwejk_mems_show_rand:
     path:     /losuj
-    defaults: { _controller: KwejkMemsBundle:Mems:showRandom }
+    defaults: { _controller: KwejkMemsBundle:Mems:showRand }

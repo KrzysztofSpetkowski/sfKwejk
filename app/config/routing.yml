@@ -20,7 +20,7 @@ kwejk_user:
 
 kwejk_admin:
     resource: "@KwejkAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
     
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"

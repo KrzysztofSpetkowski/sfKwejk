@@ -2,3 +2,8 @@ services:
 #    kwejk_user.example:
 #        class: Kwejk\UserBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    bootcamp_user_registration:
+            class: Kwejk\UserBundle\Form\Type\RegistrationFormType
+            tags:
+                - { name: form.type, alias: kwejk_user_registration }

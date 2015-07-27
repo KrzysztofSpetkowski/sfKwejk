@@ -1,0 +1,12 @@
+<?php
+
+namespace Kwejk\AdminBundle\Controller\Kwejk;
+
+use Admingenerated\KwejkAdminBundle\BaseKwejkController\NewController as BaseNewController;
+
+/**
+ * NewController
+ */
+class NewController extends BaseNewController
+{
+}

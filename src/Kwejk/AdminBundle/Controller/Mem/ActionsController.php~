@@ -1,0 +1,12 @@
+<?php
+
+namespace Kwejk\AdminBundle\Controller\Kwejk;
+
+use Admingenerated\KwejkAdminBundle\BaseKwejkController\ActionsController as BaseActionsController;
+
+/**
+ * ActionsController
+ */
+class ActionsController extends BaseActionsController
+{
+}

@@ -1,0 +1,12 @@
+<?php
+
+namespace Kwejk\AdminBundle\Form\Type\Kwejk;
+
+use Admingenerated\KwejkAdminBundle\Form\BaseKwejkType\NewType as BaseNewType;
+
+/**
+ * NewType
+ */
+class NewType extends BaseNewType
+{
+}
